@@ -32,7 +32,9 @@ $(document).ready(function () {
                 }
                 saveCart()
                 displayCart()
+
             })
+
     })
 
 
