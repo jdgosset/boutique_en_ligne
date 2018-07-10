@@ -12,7 +12,7 @@ var descriptiondiv = $("<div>").attr('class', 'col-md-6');
 var picture = $("<img>");
 var nameContent = $("<h2>");
 var description = $("<p>").attr('class', 'desc');
-var cart = $("<button>").attr('type', 'button').attr('id', 'addCart');
+var cart = $("<button>").attr('type', 'button').attr('class', 'add2Cart');
 
 
 $(imgproddiv).append(picture);
@@ -29,17 +29,4 @@ $("body main").append(proddiv);
     $(picture).attr("src", myproduct["pictures"]);
     $('#addCart').css('height', '2em').css('width', '10em');
 
-    var panier = []
-    $('#addCart').click(function () {
-        for (var y = 0; y < panier.length; y++) {
-            if (catalog[i] >= 1) {
-                panier
-            }
-        }
-            panier.push({
-                key: catalog[i],
-                value: '1',
-            });
-            console.log(panier)
-        })
 })
