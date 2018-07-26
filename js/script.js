@@ -16,14 +16,14 @@ for (var i = 0; i < catalog.length; i++) {
     var description = $("<p>").attr('class', 'desc');
     var link = $("<a>").attr('href', 'produit.html?produit_id='+i).attr('class', 'linkprod');
     var catalogueRow = $('#catalogue');
-    var labelPrice = $("<h3>");
-    var price = $("<p>")
+     var labelPrice = $("<h3>");
+     var price = $("<p>")
 
-    nameContent.html(catalog[i].name);
-    description.html(catalog[i].description);
-    picture.attr('src', catalog[i].pictures[0]);
-    labelPrice.html('Prix');
-    price.html(catalog[i].price);
+     nameContent.html(catalog[i].name);
+     description.html(catalog[i].description);
+     picture.attr('src', catalog[i].pictures[0]);
+     labelPrice.html('Prix');
+     price.html(catalog[i].price);
 
 
 

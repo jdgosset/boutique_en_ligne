@@ -8,8 +8,46 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </head>
     <body>
-        <?php $dbh = new PDO('mysql:host=localhost;boutique en ligne=test', $admin, $xu10j4rs);
-        ?>
+        <?php $dbh = new PDO('mysql:host=localhost;dbname=boutique_en_ligne', "admin", "xu10j4rs");
+            $resultats=$dbh->query("SELECT * FROM produit");
+            $resultats->setFetchMode(PDO::FETCH_OBJ);
+      //   while( $resultat = $resultats->fetch() ){
+      //       echo 'Utilisateur : '.$resultat->Nom.'<br>';   }
+      // $resultats->closeCursor();
+       foreach($dbh->query('SELECT * from FOO') as $row) : ?>
+       <script>
+
+       $(document).ready(function(){
+
+           for (var i = 0; i < catalog.length; i++) {
+
+               var proddiv = $("<div>").attr('class', 'row');
+               var imgproddiv = $("<div>").attr('class', 'col-md-4');
+               var txtDiv = $("<div>").attr('class', 'col-md-8')
+               var descriptiondiv = $("<div>").attr('class', 'col-md-12');
+               var priceDiv = $("<div>").attr('class', 'col-md-12');
+               var picture = $("<img>");
+               var nameContent = $("<h2>");
+               var description = $("<p>").attr('class', 'desc');
+               var link = $("<a>").attr('href', 'produit.html?produit_id='+i).attr('class', 'linkprod');
+               var catalogueRow = $('#catalogue');
+                var labelPrice = $("<h3>");
+                var price = $("<p>")
+
+                nameContent.html(catalog[i].name);
+                description.html(catalog[i].description);
+                picture.attr('src', catalog[i].pictures[0]);
+                labelPrice.html('Prix');
+                price.html(catalog[i].price);
+       })
+
+       </script>
+   <?php endforeach;?>
+
+
+
+
+
         <div class="fluid-container">
             <header>
             <div class="row header">
