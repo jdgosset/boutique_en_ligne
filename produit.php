@@ -2,55 +2,24 @@
 <html lang="fr" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Catalogue</title>
+        <title>Produit</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </head>
     <body>
         <?php
+        $plop = $_GET['MyproductId'];
+        echo $plop;
+        $user = "admin";
+        $pass = "NekoJackals";
 
-   $user = "admin";
-   $pass = "NekoJackals";
+        $db = new PDO('mysql:host=localhost;dbname=Boutique', $user, $pass);
 
-   $db = new PDO('mysql:host=localhost;dbname=Boutique', $user, $pass);
-
-
-
-
-   $all=$db->query("SELECT * FROM Test");
-
-   // $all->closeCursor();
-   ?>
-
-
-   <?php  while($resultat = $all->fetch()){?>
-                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-                    <a href="produit.php?MyproductId=<?php echo $resultat[id]?>">
-                  <div class="card">
-                    <img class="card-img-top" src="<?php echo $resultat[thumb]?>" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title"><?php echo $resultat[Nom]?></h5>
-                      <p class="card-text"><?php echo $resultat[description]?></p>
-                      <span><?php echo $resultat[price]?>€</span>
-                    </div>
-                  </div>
-                  </a>
-                </div>
-            <?php } ?>
-                    <a class="linkprod" href="produit.html">
-                                   <div class="row" id="catalogue">
-                                        <div class="col-md-4">
-                                           <img src="img/produit.jpg" alt="actualité" class="homepic">
-                                       </div>
-                                       <div class="col-md-8">
-                                           <h2>Lorem</h2>
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                       </div>
-                                   </div>
-                                   </a>
-
-        <!-- <div class="fluid-container">
+        $all=$db->query("SELECT * FROM Test WHERE id='$plop'")->fetch();
+        print_r($all);
+?>
+        <div class="fluid-container">
             <header>
             <div class="row header">
                 <div class="order-sm-1 col-sm-12 order-md-2 col-md-4">
@@ -85,7 +54,7 @@
                             <a class="nav-link" href="#">Qui sommes nous ?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="catalogue.html">Commander</a>
+                            <a class="nav-link" href="#">Commander</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Produits</a>
@@ -107,39 +76,16 @@
             </nav>
             </div>
             <div class="row cart">
-                <i class="fas fa-shopping-cart"></i>
+                <a href="panier.html"><i class="fas fa-shopping-cart"></i></a>
                 <i class="fas fa-trash"></i>
-                <button type="button" name="button" class="filtre">Filtre</button>
             </div>
             </header>
             <main>
-            <div class="row homediv">
-                <div class="row catalogue">
-                    <h2 class="catalogue">Catalogue</h2>
-                </div>
-                <a class="linkprod" href="produit.html">
-                <div class="row" id="catalogue">
-                    <div class="col-md-4">
-                        <img src="img/produit.jpg" alt="actualité" class="homepic">
-                    </div>
-                    <div class="col-md-8">
-                        <h2>Lorem</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                </a>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="img/app.jpg" alt="produitphare" class="homepic">
-                    </div>
-                    <div class="col-md-8">
-                        <h2>Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-        </div>
-        </main> -->
-        <!-- <footer>
+            <div class="row homediv" id="theProduit">
+
+            </div>
+        </main>
+        <footer>
         <div class="row">
         <div class="col-sm-12 col-md-3 contact">
             <div class="col-sm-12">
@@ -201,14 +147,14 @@
         <div class="row">
             <p><i class="far fa-copyright"></i>2017 GROUPE PERJD- POWERED BY perr-jd tous droits réservés</p>
         </div>
-        </footer> -->
-        <!-- </div> -->
+        </footer>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/panier.js"></script>
     <script src="js/catalog_x1.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/panier.js"></script>
+    <script src="js/script_produit.js"></script>
     </body>
 </html>
