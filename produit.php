@@ -8,17 +8,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </head>
     <body>
-        <?php
-        $plop = $_GET['MyproductId'];
-        echo $plop;
-        $user = "admin";
-        $pass = "NekoJackals";
-
-        $db = new PDO('mysql:host=localhost;dbname=Boutique', $user, $pass);
-
-        $all=$db->query("SELECT * FROM Test WHERE id='$plop'")->fetch();
-        print_r($all);
-?>
         <div class="fluid-container">
             <header>
             <div class="row header">
@@ -82,7 +71,37 @@
             </header>
             <main>
             <div class="row homediv" id="theProduit">
+                <?php
+                $plop = $_GET['MyproductId'];
+                $user = "admin";
+                $pass = "NekoJackals";
 
+                $db = new PDO('mysql:host=localhost;dbname=Boutique', $user, $pass);
+
+                $all=$db->query("SELECT * FROM Test WHERE id='$plop'")->fetch();
+
+        ?><img src="<?php
+        echo $all["thumb"];
+        ?>" alt="<?php
+        echo $all["Nom"];
+        ?>">
+        <p>
+            <?php
+            echo $all["Nom"];
+            ?>
+        </p>
+        <p>
+            <?php
+            echo $all["description"];
+            ?>
+
+        </p>
+        <p>
+            <?php
+            echo $all["price"];
+            ?>
+
+        </p>
             </div>
         </main>
         <footer>
